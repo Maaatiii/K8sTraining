@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TestWebApplication.Helpers;
 using TestWebApplication.Models;
 
 namespace TestWebApplication
@@ -47,6 +48,8 @@ namespace TestWebApplication
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
 			MigrateDatabase(app);
+
+			app.UseMiddleware<CorrelationMiddleware>();
 
 			if (env.IsDevelopment())
 			{
