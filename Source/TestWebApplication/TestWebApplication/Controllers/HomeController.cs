@@ -37,6 +37,11 @@ namespace TestWebApplication.Controllers
 			return View();
 		}
 
+		public IActionResult Employee()
+		{
+			return RedirectToAction("Index", "Employee");
+		}
+
 		public IActionResult Privacy()
 		{
 			return View();
