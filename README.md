@@ -31,9 +31,16 @@
 3. Open deployment.yaml
 4. Update image value to your image deployed in previous step
 5. Execute kubectl command:
+
+```
 kubectl apply -f deployment.yaml
+```
+
 6. Check if there is any pod deployed
+
+```
 kubectl get pods
+```
 	
 #### Access using port-forward
 1. Execute 
