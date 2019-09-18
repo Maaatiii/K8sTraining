@@ -1,6 +1,6 @@
 # K8sTraining
 
-### Environment configuration
+## Environment configuration
 
 #### Prerequisites:
 * Docker installed
@@ -11,7 +11,7 @@
 * Asp net core installed
 * Vs 2019 
 
-### Create sample solution and prepare application docker image
+## Create sample solution and prepare application docker image
 
 #### Checkout application from github
 1. Open https://github.com/Maaatiii/K8sTraining
@@ -28,7 +28,7 @@ git clone https://github.com/Maaatiii/K8sTraining.git
 4. Application will be published
 5. You can check if repository has been created https://cloud.docker.com/u/{username}/repository/list
 
-### Deploy the application
+## Deploy the application
 
 1. git checkout **2_deployments_scripts**
 2. Open directory K8sTraining\K8sDeploymentScripts with Visual Studio Code (**hint** open this directory from cmd and enter code .)
@@ -75,7 +75,7 @@ minikube ip
 and copy ip address
 6. Open address http://{minikube ip}:{port}
 
-### Update application, rollout new version and rollback
+## Update application, rollout new version and rollback
 
 #### Update to new version of application
 
@@ -84,13 +84,13 @@ and copy ip address
 #### Check logs and get detailed status of pod
 Rollback 
 
-### Add storage to our app
+## Add storage to our app
 
-### Add Logging support
+## Add Logging support
 
-### Secrets 
+## Secrets 
 
-### Helm charts to deploy app
+## Helm charts to deploy app
 
-### Ingress
+## Ingress
 
