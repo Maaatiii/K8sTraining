@@ -22,9 +22,9 @@ git clone https://github.com/Maaatiii/K8sTraining.git
 ```
 	
 #### Create docker image and publish to dockerhub
-1. Execute
+1. Checkout tag
 ```
-git checkout **1_sample_application**
+git checkout 1_sample_application
 ```
 2. Navigate to Solution->Publish->Container Registry->Docker Hub and click **Publish**
 3. Enter credentials to docker hub
@@ -33,9 +33,9 @@ git checkout **1_sample_application**
 
 ## Deploy the application
 
-1. Execute
+1. Checkout tag
 ```
-git checkout **2_deployments_scripts**
+git checkout 2_deployments_scripts
 ```
 2. Open directory K8sTraining\K8sDeploymentScripts with Visual Studio Code (**hint** open this directory from cmd and enter code .)
 3. Open deployment.yaml
@@ -74,13 +74,47 @@ and copy ip address
 6. Open address http://{minikube ip}:{port}
 
 ## Update application, rollout new version and rollback
-
 #### Update to new version of application
+1. Change something in mvc project (modify home page)
+2. Publish new version of app by click Solution->Publish, click 'Edit Image Tag' and enter **v1.1**
+3. After image has been published execute
+```
+kubectl set image deployment/testwebapp testwebapp=docker.io/{user}/testwebapplication:v1.1
+```
+4. Execute 
+```
+kubectl get pods
+```
+verify if pods has been updated 
+5. Execute command to verify status of rollout
+```
+kubectl rollout status deployments/testwebapp
+```
+6. Open address http://{minikube ip}:{port} and verify if changes has been deployed
 
 #### Update to not exist version of application
+1. Try to update to not existing version of application
+```
+kubectl set image deployment/testwebapp testwebapp=docker.io/{user}/testwebapplication:v1.2
+```
+2. Execute 
+```
+kubectl get pods
+```
+3. Open application page (app is not working) 
 
-#### Check logs and get detailed status of pod
-Rollback 
+#### Check detailed status of pod
+1. Get detailed state of pod
+```
+kubectl logs pods/{name of pod}
+```
+
+#### Rollback 
+1. Rollback application update by executing
+```
+kubectl rollout undo deployments/testwebapp
+```
+2. Open application page
 
 ## Add storage to our app
 
