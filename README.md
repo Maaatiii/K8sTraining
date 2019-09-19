@@ -56,17 +56,13 @@ Kubectl port-forward pods/{name of your pod} 8880:80
 #### Expose application by Load Balancer service
 1. Open service.yaml in visual studio code
 2. Execute kubectl command:
-
 ```
 kubectl apply -f service.yaml
 ```
-
 3. Execute command to list services
-
 ```
 Kubectl get svc
 ```
-
 4. Copy second port i.e.  8080:4971/TCP it will be 4971
 5. Execute 
 ```
@@ -76,6 +72,8 @@ and copy ip address
 6. Open address http://{minikube ip}:{port}
 
 ## Update application, rollout new version and rollback
+
+
 
 #### Update to new version of application
 
