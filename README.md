@@ -7,16 +7,42 @@
 * Chocolatey 
 * Minikube
 * Kubectl
-* https://hub.docker.com/ account
-* Asp net core installed
-* Vs 2019 
+* https://hub.docker.com/ account created
+* Asp Net Core
+* Visual Studio Code
+* VS 2019 
+
+#### Chocolatey
+Install chocolatey https://chocolatey.org/docs/installation
+
+#### Kubectl
+```
+choco install kubernetes-cli
+```
+#### Minikube
+1. Install minikube
+```
+choco install minikube
+```
+2. Start minikube
+```
+minikube start --extra-config=apiserver.service-node-port-range=80-33300 --vm-driver=hyperv --hyperv-virtual-switch "Name of switch"
+```
+#### Helm charts
+```
+choco install kubernetes-helm
+
+helm init
+```
+
+#### Docker
+Download and install docker https://www.docker.com/get-started
 
 ## Create sample solution and prepare application docker image
 
 #### Checkout application from github
 1. Open https://github.com/Maaatiii/K8sTraining
 2. Clone repository
-
 ```
 git clone https://github.com/Maaatiii/K8sTraining.git
 ```
