@@ -22,7 +22,10 @@ git clone https://github.com/Maaatiii/K8sTraining.git
 ```
 	
 #### Create docker image and publish to dockerhub
-1. git checkout **1_sample_application**
+1. Execute
+```
+git checkout **1_sample_application**
+```
 2. Navigate to Solution->Publish->Container Registry->Docker Hub and click **Publish**
 3. Enter credentials to docker hub
 4. Application will be published
@@ -30,22 +33,21 @@ git clone https://github.com/Maaatiii/K8sTraining.git
 
 ## Deploy the application
 
-1. git checkout **2_deployments_scripts**
+1. Execute
+```
+git checkout **2_deployments_scripts**
+```
 2. Open directory K8sTraining\K8sDeploymentScripts with Visual Studio Code (**hint** open this directory from cmd and enter code .)
 3. Open deployment.yaml
 4. Update image value to your image deployed in previous step
 5. Execute kubectl command:
-
 ```
 kubectl apply -f deployment.yaml
 ```
-
 6. Check if there is any pod deployed
-
 ```
 kubectl get pods
 ```
-	
 #### Access using port-forward
 1. Execute 
 ```
@@ -73,8 +75,6 @@ and copy ip address
 
 ## Update application, rollout new version and rollback
 
-
-
 #### Update to new version of application
 
 #### Update to not exist version of application
@@ -91,4 +91,3 @@ Rollback
 ## Helm charts to deploy app
 
 ## Ingress
-
