@@ -132,6 +132,11 @@ kubectl get pods
 #### Check detailed status of pod
 1. Get detailed state of pod
 ```
+kubectl describe pod {name of pod}
+```
+
+2. Get logs from pod
+```
 kubectl logs pods/{name of pod}
 ```
 
