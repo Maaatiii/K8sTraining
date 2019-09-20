@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using TestWebApplication.Models;
 
 namespace TestWebApplication.Controllers
@@ -12,15 +13,19 @@ namespace TestWebApplication.Controllers
 	public class EmployeeController : Controller
 	{
 		private readonly EmployeeContext _context;
+		private ILogger<HomeController> _logger;
 
-		public EmployeeController(EmployeeContext context)
+		public EmployeeController(EmployeeContext context, ILogger<HomeController> logger)
 		{
 			_context = context;
+			_logger = logger;
 		}
 
 		// GET: Employee
 		public async Task<IActionResult> Index()
 		{
+			_logger.LogInformation("List employees");
+
 			ViewData["MachineName"] = Environment.MachineName;
 
 			return View(await _context.Employees.ToListAsync());

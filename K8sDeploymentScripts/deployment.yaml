@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: testwebapp
-        image: docker.io/mcywka/testwebapplication:version-0.2.0
+        image: docker.io/mcywka/testwebapplication:version-0.4.3
         ports:
         - containerPort: 80
         env:
@@ -19,6 +19,16 @@ spec:
             value: /usr/db
           - name: Hello
             value: "Hello from docker"
+          - name: SECRET_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: username
+          - name: SECRET_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: password
         volumeMounts:               # 3
         - name: sqlite-volume       # 3.a
           mountPath: /usr/db        # 3.b
