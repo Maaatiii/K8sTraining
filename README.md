@@ -99,8 +99,7 @@ minikube ip
 and copy ip address
 6. Open address http://{minikube ip}:{port}
 
-### Update application, rollout new version and rollback
-
+## Update application, rollout new version and rollback
 #### Update to new version of application
 1. Change something in mvc project (modify home page)
 2. Publish new version of app by click Solution->Publish, click 'Edit Image Tag' and enter **v1.1**
@@ -141,14 +140,19 @@ kubectl describe pod {name of pod}
 kubectl logs pods/{name of pod}
 ```
 
-### Add storage to our app
+#### Rollback 
+1. Rollback application update by executing
+```
+kubectl rollout undo deployments/testwebapp
+```
+2. Open application page
 
-### Add Logging support
+## Add storage to our app
 
-### Secrets 
+## Add Logging support
 
-### Helm charts to deploy app
+## Secrets 
 
-### Ingress
+## Helm charts to deploy app
 
 ## Ingress
