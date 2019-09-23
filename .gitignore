@@ -73,7 +73,6 @@ _NCrunch*
 *.ncrunchproject*
 *.ncrunchsolution*
 Properties\Annotations.cs
-lib
 .sonarqube
 !Vendor/sonar-scanner-msbuild/*
 !Vendor/sonar-scanner-msbuild/*/bin
