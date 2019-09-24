@@ -1,5 +1,5 @@
 # K8sTraining
-
+![](https://upload.wikimedia.org/wikipedia/en/0/00/Kubernetes_%28container_engine%29.png)
 ## Environment configuration
 
 #### Prerequisites:
@@ -21,13 +21,13 @@ choco install kubernetes-cli
 ```
 #### Minikube
 1. Install minikube --version 1.3.0
-```
-choco install minikube
-```
+	```
+	choco install minikube
+	```
 2. Start minikube
-```
-minikube start --extra-config=apiserver.service-node-port-range=80-33300 --vm-driver=hyperv --hyperv-virtual-switch "Name of switch" --cpus 4 --memory 8192
-```
+	```
+	minikube start --extra-config=apiserver.service-node-port-range=80-33300 --vm-driver=hyperv --hyperv-virtual-switch "Name of switch" --cpus 4 --memory 8192
+	```
 #### Helm charts
 ```
 choco install kubernetes-helm --version 2.14.3
@@ -43,59 +43,59 @@ Download and install docker https://www.docker.com/get-started
 #### Checkout application from github
 1. Open https://github.com/Maaatiii/K8sTraining
 2. Clone repository
-```
-git clone https://github.com/Maaatiii/K8sTraining.git
-```
+	```
+	git clone https://github.com/Maaatiii/K8sTraining.git
+	```
 	
 #### Create docker image and publish to dockerhub
 1. Checkout tag
-```
-git checkout 1_sample_application
-```
+	```
+	git checkout 1_sample_application
+	```
 2. Navigate to Solution->Publish->Container Registry->Docker Hub and click **Publish**
-3. Enter credentials to docker hub
+3. Enter your credentials
 4. Application will be published
 5. You can check if repository has been created https://cloud.docker.com/u/{username}/repository/list
 
 ## Deploy the application
 
 1. Checkout tag
-```
-git checkout 2_deployments_scripts
-```
+	```
+	git checkout 2_deployments_scripts
+	```
 2. Open directory K8sTraining\K8sDeploymentScripts with Visual Studio Code (**hint** open this directory from cmd and enter code .)
-3. Open deployment.yaml
+3. Open **deployment.yaml**
 4. Update image value to your image deployed in previous step
 5. Execute kubectl command:
-```
-kubectl apply -f deployment.yaml
-```
+	```
+	kubectl apply -f deployment.yaml
+	```
 6. Check if there is any pod deployed
-```
-kubectl get pods
-```
+	```
+	kubectl get pods
+	```
 #### Access using port-forward
 1. Execute 
-```
-Kubectl port-forward pods/{name of your pod} 8880:80
-```
+	```
+	kubectl port-forward pods/{name of your pod} 8880:80
+	```
 2. Open http://localhost:8880/
 
 #### Expose application by Load Balancer service
 1. Open K8sDeploymentScripts\service.yaml in visual studio code
 2. Execute kubectl command:
-```
-kubectl apply -f service.yaml
-```
+	```
+	kubectl apply -f service.yaml
+	```
 3. Execute command to list services
-```
-Kubectl get svc
-```
+	```
+	Kubectl get svc
+	```
 4. Copy second port i.e.  8080:4971/TCP it will be 4971
 5. Execute 
-```
-minikube ip 
-```
+	```
+	minikube ip 
+	```
 and copy ip address
 6. Open address http://{minikube ip}:{port}
 
@@ -104,47 +104,48 @@ and copy ip address
 1. Change something in mvc project (modify home page)
 2. Publish new version of app by click Solution->Publish, click 'Edit Image Tag' and enter **v1.1**
 3. After image has been published execute
-```
-kubectl set image deployment/testwebapp testwebapp=docker.io/{user}/testwebapplication:v1.1
-```
+	```
+	kubectl set image deployment/testwebapp testwebapp=docker.io/{user}/testwebapplication:v1.1
+	```
 4. Execute 
-```
-kubectl get pods
-```
-verify if pods has been updated 
+	```
+	kubectl get pods
+	```
+	verify if pods has been updated 
+
 5. Execute command to verify status of rollout
-```
-kubectl rollout status deployments/testwebapp
-```
+	```
+	kubectl rollout status deployments/testwebapp
+	```
 6. Open address http://{minikube ip}:{port} and verify if changes has been deployed
 
 #### Update to not exist version of application
 1. Try to update to not existing version of application
-```
-kubectl set image deployment/testwebapp testwebapp=docker.io/{user}/testwebapplication:v1.2
-```
+	```
+	kubectl set image deployment/testwebapp testwebapp=docker.io/{user}/testwebapplication:v1.2
+	```
 2. Execute 
-```
-kubectl get pods
-```
+	```
+	kubectl get pods
+	```
 3. Open application page (app is not working) 
 
 #### Check detailed status of pod
 1. Get detailed state of pod
-```
-kubectl describe pod {name of pod}
-```
+	```
+	kubectl describe pod {name of pod}
+	```
 
 2. Get logs from pod
-```
-kubectl logs pods/{name of pod}
-```
+	```
+	kubectl logs pods/{name of pod}
+	```
 
 #### Rollback 
 1. Rollback application update by executing
-```
-kubectl rollout undo deployments/testwebapp
-```
+	```
+	kubectl rollout undo deployments/testwebapp
+	```
 2. Open application page
 
 ## Add storage
@@ -245,6 +246,8 @@ To deploy our application we can use helm charts.
 Helm helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
 A chart is a collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a memcached pod,or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.
 
+![](https://d1qy7qyune0vt1.cloudfront.net/nutanix-us/attachment/fa2af93e-44da-4ba4-a8b4-e39215f61a03.png)
+
 #### Create new empty chart
 1.  Open application main directory and create HELM folder, navigate to this folder
 2.  To create helm chart execute:
@@ -271,7 +274,7 @@ A chart is a collection of files that describe a related set of Kubernetes resou
 		kubectl port-forward $POD_NAME 8080:80
 	```
 4. Execute this steps and open url with app
-5. Verify app is working
+5. Verify if app is working
    
 ## Ingress
 In Kubernetes, an Ingress is an object that allows access to your Kubernetes services from outside the Kubernetes cluster. You configure access by creating a collection of rules that define which inbound connections reach which services. It's kind of reverse proxy.
@@ -284,7 +287,7 @@ In Kubernetes, an Ingress is an object that allows access to your Kubernetes ser
 2. Execute ``minikube addons enable ingress`` to enable ingress
 3. Verify if ingress controller is running ``kubectl get pods -n kube-system``
 
-#### Enable ingress in helm chart
+#### Enable ingress for helm chart
 1. Open **values.yaml** of helm chart
 2. Locate **ingress** section
 3. Enable by set ``enabled: true``
@@ -302,19 +305,18 @@ In Kubernetes, an Ingress is an object that allows access to your Kubernetes ser
       paths:
       - /
 	```
-5. Navigate to helm directory and execute ``helm install testwebapp``
-6. Open http://webapp.172.17.68.218.nip.io
 
-#### Setup Ingress server for application
-We can modify Helm chart easily to support ingress for our application.
-
+#### Deploy app with Ingress
+1. Navigate to helm directory and execute ``helm install testwebapp``
+2. Execute ``kubectl get ingress`` to verify if ingress for our app has been installed
+3. Open http://webapp.172.17.68.218.nip.io
 
 ##Materials:
-
-https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
+   * https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
+   * **TBD**
 
 
 
 ## Usefull commands
-
 * ``helm del $(helm ls --all --short) --purge``  remove all helm charts
+* **TBD**
