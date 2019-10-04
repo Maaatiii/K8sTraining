@@ -4,29 +4,30 @@
 
 #### Prerequisites:
 * Docker installed
-* Chocolatey 
+* Chocolatey
 * Minikube
 * Kubectl
 * https://hub.docker.com/ account created
-* Asp Net Core
-* Visual Studio Code
-* VS 2019 
+* ASP Net Core SDK
+* Visual Studio 2019 with ASP .NET Core SDK (to build and publish your app) 
 
 #### Chocolatey
 Install chocolatey https://chocolatey.org/docs/installation
+This package manager will be usefull to install other prerequisites.
 
 #### Kubectl
 ```
 choco install kubernetes-cli
 ```
+
 #### Minikube
-1. Install minikube --version 1.3.0
+1. Install minikube version 1.3.0
 	```
-	choco install minikube
+	choco install minikube --version 1.3.0
 	```
 2. Start minikube
 	```
-	minikube start --extra-config=apiserver.service-node-port-range=80-33300 --vm-driver=hyperv --hyperv-virtual-switch "Name of switch" --cpus 4 --memory 8192
+	minikube start --extra-config=apiserver.service-node-port-range=80-33300 --vm-driver=hyperv --hyperv-virtual-switch "{Name of switch}" --cpus 4 --memory 8192
 	```
 #### Helm charts
 ```
@@ -38,9 +39,17 @@ helm init
 #### Docker
 Download and install docker https://www.docker.com/get-started
 
+---
+
+And 
+
+Let's start :-)
+
+---
+
 ## Create sample solution and prepare application docker image
 
-#### Checkout application from github
+#### Checkout application from GitHub
 1. Open https://github.com/Maaatiii/K8sTraining
 2. Clone repository
 	```
@@ -63,13 +72,14 @@ Download and install docker https://www.docker.com/get-started
 	```
 	git checkout 2_deployments_scripts
 	```
-2. Open directory K8sTraining\K8sDeploymentScripts with Visual Studio Code (**hint** open this directory from cmd and enter code .)
+2. Open directory K8sTraining\K8sDeploymentScripts (It will be usefull to use Visual Studio Code to edit yaml scripts)
 3. Open **deployment.yaml**
 4. Update image value to your image deployed in previous step
 5. Execute kubectl command:
 	```
 	kubectl apply -f deployment.yaml
 	```
+	to to add our deployment.
 6. Check if there is any pod deployed
 	```
 	kubectl get pods
@@ -92,16 +102,15 @@ Download and install docker https://www.docker.com/get-started
 	Kubectl get svc
 	```
 4. Copy second port i.e.  8080:4971/TCP it will be 4971
-5. Execute 
+5. Execute and copy ip address from output.
 	```
 	minikube ip 
 	```
-and copy ip address
-6. Open address http://{minikube ip}:{port}
+6. Open in the browser - http://{minikube ip}:{port}
 
 ## Update application, rollout new version and rollback
 #### Update to new version of application
-1. Change something in mvc project (modify home page)
+1. Change something in mvc project (i.e. modify home page add some text)
 2. Publish new version of app by click Solution->Publish, click 'Edit Image Tag' and enter **v1.1**
 3. After image has been published execute
 	```
