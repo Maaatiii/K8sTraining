@@ -88,5 +88,4 @@ paket-files/*
 Logs
 publish
 .temptools
-Dockerfile
 PublishProfiles

@@ -63,8 +63,9 @@ Let's start :-)
 	```
 2. Navigate to Solution->Publish->Container Registry->Docker Hub and click **Publish**
 3. Enter your credentials
-4. Application will be published
-5. You can check if repository has been created https://cloud.docker.com/u/{username}/repository/list
+4. Select **Edit Image Tag**>**CustomTag** option, and enter v1.0
+5. Application will be published
+6. You can check if repository has been created https://cloud.docker.com/u/{username}/repository/list
 
 ## Deploy the application
 
