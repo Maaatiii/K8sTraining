@@ -50,7 +50,7 @@ Let's start :-)
 ---
 ## Helm charts
 
-[Helm charts](README_HELMCHARTS.md)
+[Helm charts](./5_helm/README.md)
 
 ---
 ## Ingress
