@@ -44,7 +44,7 @@
 	```
 3. Execute command to list services
 	```
-	Kubectl get svc
+	kubectl get svc
 	```
 4. Copy ip address - EXTERNAL-IP - of load balancer
 5. Open in the browser - http://{EXTERNAL-IP}
@@ -97,3 +97,31 @@
 	kubectl rollout undo deployments/testwebapp
 	```
 2. Open application page
+
+
+## Scale 
+
+1. Modify code HomeController.cs to print out machine name 
+```
+ViewData["MachineName"] = Environment.MachineName;
+```
+
+in Index.cshtml
+```
+<h4>@ViewData["MachineName"]</h4>
+```
+
+2. Open application in browser refresh and notice there is one machine name printed-out.
+Because we configured only one  **replicas: 1** check in **deployment.yaml**
+3. Open **deployment.yaml** and modify replicas to 2
+4. Execute
+```
+kubectl apply -f deployment.yaml
+```
+5. Execute 
+``` 
+kubectl get pods
+```
+And notice that number of pods increased 
+
+6. Open browser and refresh application page, notice that machine name is changing

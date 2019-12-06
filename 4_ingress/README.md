@@ -10,7 +10,7 @@ In Kubernetes, an Ingress is an object that allows access to your Kubernetes ser
 
 * Execute command 
 ``` 
-helm install nginx-ingress stable/nginx-ingress
+helm install stable/nginx-ingress --generate-name
 ```
 As a result you will have a ingress controller installed on your namespace
 
@@ -23,20 +23,9 @@ kubectl get svc
 
 #### Expose your service by registering ingress rules
 
-1. Execute command to see registered ingresses
-
-```
-kubectl get ingress 
-```
-
-2. Execute command to see ingress configurtion 
-
-```
-kubectl get ingress helmtestwebapp -o yaml
-```
 ##### Install some webapps
 
-3.  Add repo with test apps 
+1.  Add repo with test apps 
 ```
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```

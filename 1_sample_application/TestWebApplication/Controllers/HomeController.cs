@@ -12,6 +12,7 @@ namespace TestWebApplication.Controllers
 	{
 		public IActionResult Index()
 		{
+			ViewData["Message"] = Environment.GetEnvironmentVariable("Hello");
 			return View();
 		}
 

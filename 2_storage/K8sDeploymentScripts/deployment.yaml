@@ -19,10 +19,10 @@ spec:
             value: /usr/db
           - name: Hello
             value: "Hello from docker"
-        volumeMounts:               # 3
-        - name: sqlite-volume       # 3.a
-          mountPath: /usr/db        # 3.b
+        volumeMounts:
+        - name: sqlite-volume
+          mountPath: /usr/db 
       volumes:
-        - name: sqlite-volume         # 2
+        - name: sqlite-volume
           persistentVolumeClaim:
-            claimName: azure-file   # 1 
+            claimName: azure-file

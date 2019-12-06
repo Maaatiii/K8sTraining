@@ -3,17 +3,17 @@ kind: Deployment
 metadata:
   name: testwebapp
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
         app: testwebapp
     spec:
       containers:
-      - name: testwebapp
-        image: docker.io/mcywka/testwebapplication:v1.0
-        ports:
-        - containerPort: 80
-        env:
-          - name: Hello
-            value: "Hello from docker"
+        - name: testwebapp
+          image: docker.io/mcywka/testwebapplication:version1.3
+          ports:
+            - containerPort: 80
+          env:
+            - name: Hello
+              value: "Hello from docker"

@@ -24,7 +24,7 @@
 	It's describe that our deployment need Persistent Volume Claim with name (azure-file) (https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 	And it should be mounted in specific path **/usr/db**
 
-2. Open K8sDeploymentScripts\sqllite-claim.yaml. It's definition of our PVC storage.
+2. Open K8sDeploymentScripts\azure-file-claim.yaml. It's definition of our PVC storage.
 3. To install claim execute commands:
 
 	```
@@ -35,4 +35,4 @@
 	kubectl apply -f azure-file-claim.yaml
 	```
 	
-4. Open updated application and verify whether employee storage module is working.
+4. Open updated application and verify whether employee storage module is working, add some data.

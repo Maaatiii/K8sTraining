@@ -23,8 +23,6 @@ choco install kubernetes-cli
 #### Helm charts
 ```
 choco install kubernetes-helm
-
-helm init
 ```
 
 #### Docker
