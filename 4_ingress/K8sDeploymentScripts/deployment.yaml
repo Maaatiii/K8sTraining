@@ -10,31 +10,31 @@ spec:
         app: testwebapp
     spec:
       containers:
-      - name: testwebapp
-        image: docker.io/mcywka/testwebapplication:version-0.4.10
-        ports:
-        - containerPort: 80
-        env:
-          - name: DATABASE_DIR
-            value: /usr/db
-          - name: API_PATH_BASE
-            value: "/test2"
-          - name: Hello
-            value: "Hello from docker"
-          - name: SECRET_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: mysecret
-                key: username
-          - name: SECRET_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysecret
-                key: password
-        volumeMounts:               # 3
-        - name: sqlite-volume       # 3.a
-          mountPath: /usr/db        # 3.b
+        - name: testwebapp
+          image: docker.io/mcywka/testwebapplication:version-0.4.10
+          ports:
+            - containerPort: 80
+          env:
+            - name: DATABASE_DIR
+              value: /usr/db
+            - name: API_PATH_BASE
+              value: "/test2"
+            - name: Hello
+              value: "Hello from docker"
+            - name: SECRET_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: username
+            - name: SECRET_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret
+                  key: password
+          volumeMounts: # 3
+            - name: sqlite-volume # 3.a
+              mountPath: /usr/db # 3.b
       volumes:
-        - name: sqlite-volume         # 2
+        - name: sqlite-volume # 2
           persistentVolumeClaim:
-            claimName: azure-file   # 1 
+            claimName: azure-file # 1

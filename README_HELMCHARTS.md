@@ -9,7 +9,7 @@ A chart is a collection of files that describe a related set of Kubernetes resou
 1.  Open application main directory and create HELM folder, navigate to this folder
 2.  To create helm chart execute:
 	```
-	helm create testwebapp
+	helm create helmtestwebapp
 	```
 3. Open values.yaml file
 4. Locate **image** section
@@ -19,7 +19,7 @@ A chart is a collection of files that describe a related set of Kubernetes resou
 #### Deploy your chart
 1. Execute in main directory of your chart
    ``` 
-   helm install testwebapp
+   helm install helmtestwebapp
    ```
 2. Verify if pod has been installed ``kubectl get pods``
 3. Please notice that after installing helm chart there should be info presented

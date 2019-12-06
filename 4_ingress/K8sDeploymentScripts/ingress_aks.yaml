@@ -5,10 +5,11 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    #nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
-  - http:
+  - host: test.51.105.212.200.nip.io #IMPORTANT! update this to ip of your loadbalancer ingress controller service
+    http:
       paths:
       - backend:
           serviceName: aks-helloworld
@@ -19,6 +20,6 @@ spec:
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
       - backend:
-          serviceName: testwebapp
+          serviceName: testwebapp-service-cluster
           servicePort: 80
-        path: /test2
+        path: /testwebapp(/|$)(.*)

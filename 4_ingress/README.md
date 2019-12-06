@@ -4,10 +4,88 @@ In Kubernetes, an Ingress is an object that allows access to your Kubernetes ser
 
 ![](https://miro.medium.com/max/1294/1*RX1ZjiDaXIChc2b_5OYIww.png)
 
-#### Enable Ingress on minikube
-1. Check if ingress is enabled ``minikube addons list``
-2. Execute ``minikube addons enable ingress`` to enable ingress
-3. Verify if ingress controller is running ``kubectl get pods -n kube-system``
+#### Install Ingress 
+
+* Open working directory 4_ingress 
+
+* Execute command 
+``` 
+helm install nginx-ingress stable/nginx-ingress
+```
+As a result you will have a ingress controller installed on your namespace
+
+* Check address of ingress loadbalancer endpoitn
+```
+kubectl get svc
+```
+* Locate nginx-ingress-controller and copy **EXTERNAL-IP** address
+* Open in the browser  
+
+#### Expose your service by registering ingress rules
+
+1. Execute command to see registered ingresses
+
+```
+kubectl get ingress 
+```
+
+2. Execute command to see ingress configurtion 
+
+```
+kubectl get ingress helmtestwebapp -o yaml
+```
+##### Install some webapps
+
+3.  Add repo with test apps 
+```
+helm repo add azure-samples https://azure-samples.github.io/helm-charts/
+```
+
+4. Install 2 hello world apps from helm charts
+```
+helm install azure-samples/aks-helloworld --generate-name
+```
+
+```
+helm install azure-samples/aks-helloworld --set title="AKS Ingress Demo" --set serviceName="ingress-demo" --generate-name
+```
+
+5. Create route to our applications, open directory K8sDeploymentScripts and open file **ingress_aks.yaml** update ip address according to comment
+
+6. Apply this ingress rules by executing:
+
+```
+kubectl apply -f ingress_aks.yaml
+```
+
+7. Open in web browser:
+   http://{ingress host}/hello-world-two
+   http://{ingress host}/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #### Enable ingress for helm chart
 1. Open **values.yaml** of helm chart
