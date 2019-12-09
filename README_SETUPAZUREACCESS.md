@@ -33,6 +33,10 @@ kubectl config set-context --current --namespace={your user}
 
 ## Open kubernetes dashboard
 
+We can connect to kubernetes dashboard to browse and control our cluster.
+
 ```
 az aks browse --resource-group rose-k8s --name rose-k8s-play
 ```
+
+After execution of above command dashboard will be exposed by proxy so we could browse it locally.
