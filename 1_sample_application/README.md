@@ -110,15 +110,17 @@ in Index.cshtml
 ```
 <h4>@ViewData["MachineName"]</h4>
 ```
+2. Publish new version of application to the docker repository and then update deployment to new version.
 
-2. Open application in browser refresh and notice there is one machine name printed-out.
+3. Open application in the browser refresh and notice there is one machine name printed-out.
 Because we configured only one  **replicas: 1** check in **deployment.yaml**
-3. Open **deployment.yaml** and modify replicas to 2
-4. Execute
+
+4. Open **deployment.yaml** and modify replicas to 2
+5. Execute
 ```
 kubectl apply -f deployment.yaml
 ```
-5. Execute 
+6. Execute 
 ``` 
 kubectl get pods
 ```
