@@ -126,4 +126,47 @@ kubectl get pods
 ```
 And notice that number of pods increased 
 
-6. Open browser and refresh application page, notice that machine name is changing
+7. Open browser and refresh application page, notice that machine name is changing
+
+## Liveness probe
+
+Kubernetes can check if a container is still alive through liveness probes. You can specify
+a liveness probe for each container in the pod’s specification. Kubernetes will periodically
+execute the probe and restart the container if the probe fails.
+
+1. Modify code of asp project, open Startup.cs and add 
+* in ConfigureServices method:
+```
+services.AddHealthChecks();
+```
+* in Configure
+```
+app.UseHealthChecks("/health");
+```
+
+2. Publish our app and deploy to the cluster 
+3. Verify if app is working
+4. Modify deployment.yaml file
+```
+      containers:
+        - name: testwebapp
+          image: docker.io/mcywka/testwebapplication:test_1.5
+          ports:
+            - containerPort: 80
+          env:
+            - name: Hello
+              value: "Hello from docker"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 3
+```
+and add livenessProbe section
+5. Update deployment
+```
+kubectl apply -f deployment.yaml
+```
+6. Open app and verify if it's working
+7. Open application page /health to verify healthcheck
