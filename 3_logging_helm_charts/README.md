@@ -25,6 +25,7 @@ Seq is the intelligent search, analysis, and alerting server built specifically 
    kubectl expose deployment halting-olm-seq --type=LoadBalancer --name=seq-service
    ```
    Where ``halting-olm-seq`` is the name of deployment. Hint you can check deployment name by ``kubectl get deployments``
+   
 4. Execute `` kubectl get svc`` and locate seq-service and copy port forwarded to 80 port
 5. Open address **EXTERNAL-IP** , seq server should be opened.
 

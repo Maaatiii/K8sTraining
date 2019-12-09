@@ -30,3 +30,9 @@ And set your name as a current namespace
 ```
 kubectl config set-context --current --namespace={your user}
 ```
+
+## Open kubernetes dashboard
+
+```
+az aks browse --resource-group rose-k8s --name rose-k8s-play
+```

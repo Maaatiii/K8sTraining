@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: testwebapp
-          image: docker.io/mcywka/testwebapplication:version1.3
+          image: docker.io/mcywka/testwebapplication:version1.99
           ports:
             - containerPort: 80
           env:
