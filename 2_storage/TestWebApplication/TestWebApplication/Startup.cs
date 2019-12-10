@@ -35,9 +35,6 @@ namespace TestWebApplication
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-			//services.AddDbContext<EmployeeContext>(options =>
-			//	options.UseSqlite($"Data Source={AppContext.BaseDirectory}/sampledata.db"));
-
 			services.AddDbContext<EmployeeContext>(options =>
 				options.UseSqlite($"Data Source={Configuration["DATABASE_DIR"]}/data.db"));
 

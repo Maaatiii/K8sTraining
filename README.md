@@ -48,19 +48,16 @@ Let's start :-)
 [Storage](./2_storage/README.md)
 
 ---
-## Helm charts
 
-[Helm charts](./5_helm/README.md)
-
----
 ## Ingress
 
 [Setup ingress](./4_ingress/README.md)
 
 ---
-## Logging
 
-[Setup logging using helm charts](./3_logging_helm_charts/README.md)
+## Helm charts
+
+[Helm charts](./5_helm/README.md)
 
 ---
 ## Materials:

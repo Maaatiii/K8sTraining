@@ -14,12 +14,12 @@ A chart is a collection of files that describe a related set of Kubernetes resou
 3. Open values.yaml file
 4. Locate **image** section
 5. Change repository to your image  **docker.io/{user_name}/testwebapplication**
-6. Update image tag to early version of your app **v1.1** (simple hello world page from section 1) 
+6. In file Chart.yaml update version your app - appVersion field to **v1.1** (simple hello world page from section 1) 
 
 #### Deploy your chart
 1. Execute in main directory of your chart
    ``` 
-   helm install testwebapp testwebapp
+   helm install helmtestwebapp testwebapp
    ```
 2. Verify if pod has been installed ``kubectl get pods``
 3. Please notice that after installing helm chart there should be info presented
@@ -57,22 +57,22 @@ ingress:
 ---
 * Execute helm upgrade
 ```
-helm upgrade testwebapp testwebapp
+helm upgrade helmtestwebapp testwebapp
 ```
 * Open address http://test.51.105.212.200.nip.io/test2
 
 
 ## Customize helm chart
 To customize helm chart we'll try to add secret to our chart
-1. Open helmtestwebapp/templates 
+1. Open testwebapp/templates 
 2. Create new file secret.yaml
 ```
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ include "helmtestwebapp.fullname" . }}-secret
+  name: {{ include "testwebapp.fullname" . }}-secret
   labels:
-{{ include "helmtestwebapp.labels" . | indent 4 }}
+{{ include "testwebapp.labels" . | indent 4 }}
 type: Opaque
 stringData:
   username: admin
@@ -80,7 +80,7 @@ stringData:
 ```
 3. Execute helm upgrade
 ```
-helm upgrade testwebapp testwebapp
+helm upgrade helmtestwebapp testwebapp
 ```
 4. Verify whether secret has been added
 ```
@@ -96,7 +96,7 @@ stringData:
   password: {{ .Values.cred.pass }}
 ```
 
-2. We need to define new values in values.yaml, open this file and add
+2. We need to define new values in values.yaml, open this file and add following section
 
 ```
 cred:

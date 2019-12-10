@@ -11,7 +11,7 @@
 
 #### Deploy application with storage module
 1. Open K8sDeploymentScripts\deployment.yaml - update image to published image
-	Noticed that 2 things has been added to deployment definition:
+	Please notice that 2 things has been added to the deployment definition:
 	```
 			volumeMounts:               
 			- name: sqlite-volume       
