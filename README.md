@@ -7,7 +7,7 @@
 * Chocolatey
 * Kubectl
 * https://hub.docker.com/ account created
-* ASP Net Core SDK
+* ASP Net Core SDK 2.2 (https://dotnet.microsoft.com/download/dotnet-core/2.2) 
 * Visual Studio 2019 with ASP .NET Core SDK (to build and publish your app)
 * Azure CLI 
 
