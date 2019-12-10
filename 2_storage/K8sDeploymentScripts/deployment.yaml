@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: testwebapp
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: testwebapp
+    spec:
+      containers:
+      - name: testwebapp
+        image: docker.io/mcywka/testwebapplication:test_2.0
+        ports:
+        - containerPort: 80
+        env:
+          - name: DATABASE_DIR
+            value: /usr/db
+          - name: Hello
+            value: "Hello from docker"
+        volumeMounts:
+        - name: sqlite-volume
+          mountPath: /usr/db 
+      volumes:
+        - name: sqlite-volume
+          persistentVolumeClaim:
+            claimName: azure-file
