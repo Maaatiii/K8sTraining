@@ -28,6 +28,12 @@ choco install kubernetes-helm
 #### Docker
 Download and install docker https://www.docker.com/get-started
 
+#### Minikube
+1. Install minikube
+``choco install minikube``
+2. Run minikube 
+``minikube start --vm-driver hyperv``
+
 And 
 
 Let's start :-)
