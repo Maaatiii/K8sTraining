@@ -174,3 +174,8 @@ kubectl apply -f deployment.yaml
 ```
 6. Open app and verify if it's working
 7. Open application page /health to verify healthcheck
+
+
+## TODO
+* Env variables, update env variable and check 
+* Liveness probe based on file (delete file from container and check)
