@@ -42,11 +42,15 @@
 	```
 	kubectl apply -f service.yaml
 	```
-3. Execute command to list services
+2. Open new terminal and execute (to create tunnel for the loadbalancer)
+	```
+	minikube tunnel
+	```
+4. Execute command to list services
 	```
 	kubectl get svc
 	```
-4. Copy ip address - EXTERNAL-IP - of load balancer
+4. Copy ip address - EXTERNAL-IP - of load balancer , if it's pending wait  and execute this command again
 5. Open in the browser - http://{EXTERNAL-IP}
 
 ## Update application, rollout new version and rollback
